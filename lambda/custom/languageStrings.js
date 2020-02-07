@@ -14,7 +14,8 @@ module.exports = {
             GOODBYE_MSG: 'Goodbye!',
             REFLECTOR_MSG: 'You just triggered {{intentName}}',
             FALLBACK_MSG: 'Sorry, I don\'t know about that. Please try again.',
-            ERROR_MSG: 'Sorry, I had trouble doing what you asked. Please try again.'
+            ERROR_MSG: 'Sorry, I had trouble doing what you asked. Please try again.',
+            LOOP_MSG: 'Looping the video.'
         }
     },
     es: {
@@ -25,7 +26,8 @@ module.exports = {
             GOODBYE_MSG: 'Hasta luego!',
             REFLECTOR_MSG: 'Acabas de activar {{intentName}}',
             FALLBACK_MSG: 'Lo siento, no se nada sobre eso. Por favor inténtalo otra vez.',
-            ERROR_MSG: 'Lo siento, ha habido un error. Por favor inténtalo otra vez.'
+            ERROR_MSG: 'Lo siento, ha habido un error. Por favor inténtalo otra vez.',
+            LOOP_MSG: 'Y autra vez.'
         }
     },
     de: {
@@ -36,7 +38,8 @@ module.exports = {
             GOODBYE_MSG: 'Tschüss!',
             REFLECTOR_MSG: 'Du hast gerade {{intentName}} ausgelöst',
             FALLBACK_MSG: 'Es tut mir leid, ich weiss das nicht. Bitte versuche es erneut.',
-            ERROR_MSG: 'Es tut mir leid, ich konnte das nicht machen. Bitte versuche es erneut.'
+            ERROR_MSG: 'Es tut mir leid, ich konnte das nicht machen. Bitte versuche es erneut.',
+            LOOP_MSG: 'Und noch einmal das Video.'
         }
     },
     ja: {
@@ -47,7 +50,8 @@ module.exports = {
             GOODBYE_MSG: 'さようなら',
             REFLECTOR_MSG: '{{intentName}}がトリガーされました。',
             FALLBACK_MSG: 'ごめんなさい。ちょっとよくわかりませんでした。もう一度言ってみてください。',
-            ERROR_MSG: 'ごめんなさい。なんだかうまく行かないようです。もう一度言ってみてください。'
+            ERROR_MSG: 'ごめんなさい。なんだかうまく行かないようです。もう一度言ってみてください。',
+            LOOP_MSG: '私はビデオをループしています'
         }
     },
     fr: {
@@ -58,7 +62,8 @@ module.exports = {
             GOODBYE_MSG: 'Au revoir!',
             REFLECTOR_MSG: 'Vous avez invoqué l\'intention {{intentName}}',
             FALLBACK_MSG: 'Désolé, je ne sais pas. Pouvez-vous reformuler?',
-            ERROR_MSG: 'Désolé, je n\'ai pas compris. Pouvez-vous reformuler?'
+            ERROR_MSG: 'Désolé, je n\'ai pas compris. Pouvez-vous reformuler?',
+            LOOP_MSG: 'Je relance la vidéo'
         }
     },
     it: {
@@ -80,7 +85,8 @@ module.exports = {
             GOODBYE_MSG: 'Tchau!',
             REFLECTOR_MSG: 'Você acabou de ativar {{intentName}}',
             FALLBACK_MSG: 'Desculpe, não sei o que dizer. Por favor tente novamente.',
-            ERROR_MSG: 'Desculpe, não consegui fazer o que você pediu. Por favor tente novamente.'
+            ERROR_MSG: 'Desculpe, não consegui fazer o que você pediu. Por favor tente novamente.',
+            LOOP_MSG: 'Estou dando laços no vídeo'
         }
     },
     hi: {
@@ -91,7 +97,8 @@ module.exports = {
             GOODBYE_MSG: 'अलविदा ',
             REFLECTOR_MSG: 'आपने {{intentName}} trigger किया हैं ',
             FALLBACK_MSG: 'Sorry, मैं वो समझ नहीं पायी. क्या आप दोहरा सकते हैं ',
-            ERROR_MSG: 'Sorry, मैं वो समझ नहीं पायी. क्या आप दोहरा सकते हैं '
+            ERROR_MSG: 'Sorry, मैं वो समझ नहीं पायी. क्या आप दोहरा सकते हैं ',
+            LOOP_MSG: 'मैं वीडियो को लूप कर रहा हूं'
         }
     }
 }

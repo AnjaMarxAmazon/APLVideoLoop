@@ -14,12 +14,75 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = handlerInput.t('WELCOME_MSG');
-
+        console.log("LaunchRequest");
         return handlerInput.responseBuilder
-            .speak(speakOutput)
-            .reprompt(speakOutput)
+            .addDirective({
+                type: 'Alexa.Presentation.APL.RenderDocument',
+                version: '1.2',
+                document: require('./apl/video'),
+                datasources: {},
+                token: "videoplayer"
+            })
             .getResponse();
+    }
+};
+
+
+const EventHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'Alexa.Presentation.APL.UserEvent';
+    },
+    handle(handlerInput) {
+        console.log("=== User Event received ===\n" + JSON.stringify(handlerInput.requestEnvelope.request));
+
+        /* When the video ends, the following user event is received:
+        {
+            "type": "Alexa.Presentation.APL.UserEvent",
+            "requestId": "ID",
+            "timestamp": "2020-02-07T11:20:37Z",
+            "locale": "xx-XX",
+            "arguments": [
+                "Message to myself that the video has ended."
+            ],
+            "components": {},
+            "source": {
+                "type": "Video",
+                "handler": "End",
+                "id": "APLVideo"
+            },
+            "token": ""
+        }*/
+        const { request } = handlerInput.requestEnvelope;
+        let eventArgument = request.arguments[0];
+        // Test Simulator is sending JSON while device will send String
+        try { eventArgument = JSON.parse(eventArgument); } catch (e) { console.log(`~~~~ Error caught: ${JSON.stringify(e)}`) }
+        
+        // check for the specific UserEvent for which the video should be looped
+        if (eventArgument == 'Message to myself that the video has ended.') {
+            const speakOutput = handlerInput.t('LOOP_MSG');
+            return handlerInput.responseBuilder
+                .speak(speakOutput)
+                .addDirective(
+                    {
+                        "type": "Alexa.Presentation.APL.ExecuteCommands",
+                        "token": "videoplayer",
+                        "commands": [
+                            {
+                                "type": "ControlMedia",
+                                "componentId": "APLVideo",
+                                "command": "rewind"
+                            },
+                            {
+                                "type": "ControlMedia",
+                                "componentId": "APLVideo",
+                                "command": "play"
+                            }
+                        ]
+                    }
+                )
+                .getResponse();
+        }
+        return handlerInput.responseBuilder.getResponse();
     }
 };
 
@@ -64,6 +127,7 @@ const CancelAndStopIntentHandler = {
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
+            .withShouldEndSession(true)
             .getResponse();
     }
 };
@@ -112,7 +176,7 @@ const IntentReflectorHandler = {
     },
     handle(handlerInput) {
         const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);
-        const speakOutput = handlerInput.t('REFLECTOR_MSG', {intentName: intentName});
+        const speakOutput = handlerInput.t('REFLECTOR_MSG', { intentName: intentName });
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -159,6 +223,7 @@ const LocalisationRequestInterceptor = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
+        EventHandler,
         HelloWorldIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,

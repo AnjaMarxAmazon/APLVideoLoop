@@ -1,0 +1,36 @@
+{
+    "type": "APL",
+    "version": "1.2",
+    "settings": {},
+    "theme": "dark",
+    "import": [],
+    "resources": [],
+    "styles": {},
+    "onMount": [],
+    "graphics": {},
+    "commands": {},
+    "layouts": {},
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "type": "Video",
+                "id": "APLVideo",
+                "width": "100vw",
+                "height": "100vh",
+                "autoplay": true,
+                "source": "https://anjamarxpublicskilldev.s3-eu-west-1.amazonaws.com/Pexels+Videos+1654216.mp4",
+                "onEnd": [
+                    {
+                        "type": "SendEvent",
+                        "arguments": [
+                            "Message to myself that the video has ended."
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

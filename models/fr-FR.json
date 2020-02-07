@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "le génie des salutations",
+            "invocationName": "le génie des retours des vidéos",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
